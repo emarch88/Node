@@ -35,3 +35,12 @@ getUserById(id, function (error, user) { //lo que dice function es el callback, 
         console.log(user);
     }) //cierra el callback de getUserById(2, function (error, user)
 });
+
+const {getUserByIdArrow} = require('./js-foundation/04-arrow'); //desestructuracion y renombrado de la funcion getUserById a getUserByIdArrow
+
+getUserByIdArrow(id, (error, user) => { 
+    if(error){
+       throw new Error(error);
+    }
+    console.log(user);
+});
