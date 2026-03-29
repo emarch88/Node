@@ -1,6 +1,7 @@
 console.log(`Esta linea se ejecuta cuando se ejecuta este archivo app.js desde package.json haciendo npm start o en terminal con  
     node src/app.js y se ejecuta el codigo de app.js'`);
 
+
 const templateExports = require('./js-foundation/01-template'); //se ejecuta con npm start o node src/app.js y se ejecuta el codigo de 01-template.js
 //ejecuta el module.exports
 //forma 1 de imprimir
@@ -12,4 +13,25 @@ console.log(templateExports.emailTemplate); //imprime el valor de emailTemplate 
 const {emailTemplate} = require('./js-foundation/01-template'); //desestructuracion
 //forma 3 de imprimir
 console.log(emailTemplate); //imprime el valor de emailTemplate que se exporta desde 01-template.js
- require('./js-foundation/02-destructuring'); //se ejecuta con npm start o node src/app.js y se ejecuta el codigo de 02-destructuring.js
+
+require('./js-foundation/02-destructuring'); //se ejecuta con npm start o node src/app.js y se ejecuta el codigo de 02-destructuring.js
+
+
+
+const {getUserById} = require('./js-foundation/03-callbacks'); 
+
+const id = 1;
+
+getUserById(id, function (error, user) { //lo que dice function es el callback, que se le pasa error y user, lo que devuelve la función
+    if(error){
+       throw new Error(error);
+    }
+    console.log(user);
+    //si tuviera que colocar otro callback dentro de este callback, se haria aqui, pero esto se llama callback hell, y es algo que se debe evitar, por eso se utilizan las promesas o async/await para evitar esto
+    getUserById(2, function (error, user) {
+        if(error){
+            throw new Error(error);
+        }
+        console.log(user);
+    }) //cierra el callback de getUserById(2, function (error, user)
+});
