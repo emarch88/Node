@@ -44,3 +44,12 @@ getUserByIdArrow(id, (error, user) => {
     }
     console.log(user);
 });
+
+
+//Factory Function fuertemente acoplada:
+const obj = {
+    name: 'Estela',
+    birthdate: '10/10/1990',
+}
+const {buildPerson} = require('./js-foundation/05.factory'); //desestructuracion y renombrado de la funcion buildPerson a buildPerson   
+console.log(buildPerson(obj));
