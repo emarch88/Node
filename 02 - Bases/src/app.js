@@ -59,5 +59,11 @@ const { getUUID, getAge } = require('./plugins/index.js'); //en app.js se import
 const {buildMakePerson} = require('./js-foundation/05.factory'); //desestructuracion y renombrado de la funcion buildMakePerson a buildMakePerson
 const makePerson = buildMakePerson({getUUID, getAge}); //Esto es una función. se le pasan las dependencias a la funcion buildMakePerson, que devuelve la funcion buildPerson, y se le asigna a makePerson, que es la funcion que se va a utilizar para crear personas, y se le pasan las dependencias getUUID y getAge, que son las funciones que se utilizan para generar el id y calcular la edad respectivamente, y se le pasan como argumentos a buildMakePerson, que es la funcion que devuelve buildPerson, y se le asigna a makePerson, que es la funcion que se va a utilizar para crear personas, y se le pasan las dependencias getUUID y getAge, que son las funciones que se utilizan para generar el id y calcular la edad respectivamente, y se le pasan como argumentos a buildMakePerson, que es la funcion que devuelve buildPerson, y se le asigna a makePerson, que es la funcion que se va a utilizar para crear personas
 const Estela = makePerson(obj); 
-
 console.log({Estela});
+
+
+//Promises 
+const getPokemonById = require('./js-foundation/06-promises'); 
+console.log(getPokemonById(4, (pokemon) => {
+    console.log({pokemon});
+}));    
