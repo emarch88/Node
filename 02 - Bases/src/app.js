@@ -62,8 +62,21 @@ const Estela = makePerson(obj);
 console.log({Estela});
 
 
-//Promises 
-const getPokemonById = require('./js-foundation/06-promises'); 
+//Promises
+const { getPokemonById, getPokemonByIdNoCallback } = require('./js-foundation/06-promises'); 
+
+
+//Promises with callbacks
 console.log(getPokemonById(4, (pokemon) => {
     console.log({pokemon});
 }));    
+
+
+//Promises without callbacks
+getPokemonByIdNoCallback(2)
+.then(pokemon => {
+    console.log({pokemon});
+})
+.catch(error => {
+    console.error(error);
+});
