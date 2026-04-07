@@ -63,7 +63,7 @@ console.log({Estela});
 
 
 //Promises
-const { getPokemonById, getPokemonByIdNoCallback } = require('./js-foundation/06-promises'); 
+const { getPokemonById, getPokemonByIdNoCallback,getPokemonByIdAsync } = require('./js-foundation/06-promises'); 
 
 
 //Promises with callbacks
@@ -79,4 +79,13 @@ getPokemonByIdNoCallback(2)
 })
 .catch(error => {
     console.error(error);
+})
+.finally(() => {
+    console.log('Proceso terminado');
 });
+
+//Promises with Async/Await
+getPokemonByIdAsync(1)
+.then(pokemon =>{console.log({pokemon})})
+.catch(error => {console.error(error)})
+.finally(() => {console.log('Proceso terminado')});

@@ -19,12 +19,23 @@ const getPokemonByIdNoCallback = (id)=>{
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     return fetch(url)
     .then(response => response.json())
+    .then(() => {throw new Error('Error al obtener el pokemon')})
     .then(pokemon => pokemon.name);
 }
 
 //si una funcion no tiene un return explicito devuelve undefined
 
+
+//Función que devuelve promesa:
+const getPokemonByIdAsync = async (id)=>{
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const response = await fetch(url);
+    const pokemon = await response.json();
+    return pokemon.name;
+}
+
 module.exports = {
     getPokemonById, 
-    getPokemonByIdNoCallback
+    getPokemonByIdNoCallback,
+    getPokemonByIdAsync,
 };
