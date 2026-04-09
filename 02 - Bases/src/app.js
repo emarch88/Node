@@ -1,41 +1,45 @@
-console.log(`Esta linea se ejecuta cuando se ejecuta este archivo app.js desde package.json haciendo npm start o en terminal con  
-    node src/app.js y se ejecuta el codigo de app.js'`);
-
-
-const templateExports = require('./js-foundation/01-template'); //se ejecuta con npm start o node src/app.js y se ejecuta el codigo de 01-template.js
-//ejecuta el module.exports
-//forma 1 de imprimir
-console.log(templateExports); //imprime el valor de todo el archivo 01-template.js
-//forma 2 de imprimir
-console.log(templateExports.emailTemplate); //imprime el valor de emailTemplate que se exporta desde 01-template.js 
-
-
+/*
+//Primer módulo importado de dos formas:
+const something = require('./js-foundation/01-template'); 
 const {emailTemplate} = require('./js-foundation/01-template'); //desestructuracion
-//forma 3 de imprimir
-console.log(emailTemplate); //imprime el valor de emailTemplate que se exporta desde 01-template.js
 
-require('./js-foundation/02-destructuring'); //se ejecuta con npm start o node src/app.js y se ejecuta el codigo de 02-destructuring.js
+console.log(something); //Imprime el objeto exportado por el módulo
+console.log(something.emailTemplate); //Imprime la propiedad del objeto
+console.log(emailTemplate); //También imprime la propiedad del objeto
+*/
 
 
 
+
+
+
+
+
+/*
+//Segundo módulo importado:
+const domain = require('./js-foundation/02-destructuring'); 
+*/
+
+
+
+
+
+
+//Tercer módulo importado: Uso de callbacks 
 const {getUserById} = require('./js-foundation/03-callbacks'); 
-
 const id = 1;
-
-getUserById(id, function (error, user) { //lo que dice function es el callback, que se le pasa error y user, lo que devuelve la función
-    if(error){
-       throw new Error(error);
-    }
+getUserById(id, function (error, user) { //lo que dice function es el callback
+    if(error){throw new Error(error);}
     console.log(user);
     //si tuviera que colocar otro callback dentro de este callback, se haria aqui, pero esto se llama callback hell, y es algo que se debe evitar, por eso se utilizan las promesas o async/await para evitar esto
     getUserById(2, function (error, user) {
-        if(error){
-            throw new Error(error);
-        }
+        if(error){throw new Error(error);}
         console.log(user);
     }) //cierra el callback de getUserById(2, function (error, user)
 });
 
+
+/*
 const {getUserByIdArrow} = require('./js-foundation/04-arrow'); //desestructuracion y renombrado de la funcion getUserById a getUserByIdArrow
 
 getUserByIdArrow(id, (error, user) => { 
@@ -54,6 +58,31 @@ const obj = {
 /* const {buildPerson} = require('./js-foundation/05.factory'); //desestructuracion y renombrado de la funcion buildPerson a buildPerson   
 
 console.log(buildPerson(obj)); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
 
 const { getUUID, getAge } = require('./plugins/index.js'); //en app.js se importa el patrón adaptador. Es decir, se importan los adaptadores (getUUID y getAge) desde plugins/index.js
 const {buildMakePerson} = require('./js-foundation/05.factory'); //desestructuracion y renombrado de la funcion buildMakePerson a buildMakePerson
@@ -93,4 +122,4 @@ getPokemonByIdAsync(1)
 getPokemon(50)
 .then(pokemon =>{console.log({pokemon})})
 .catch(error => {console.error(error)})
-.finally(() => {console.log('Proceso terminado')});
+.finally(() => {console.log('Proceso terminado')});*/
